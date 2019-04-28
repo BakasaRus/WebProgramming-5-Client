@@ -5,7 +5,9 @@
         <h2 class="title is-2">{{ title }}</h2>
         <div class="field is-grouped">
           <p class="control">
-            <button class="button is-success" @click="save">Сохранить</button>
+            <button v-if="this.$route.params.id === undefined" class="button is-success"
+              @click="save">Сохранить</button>
+            <button v-else class="button is-success" @click="update">Обновить</button>
           </p>
           <p class="control">
             <button class="button is-danger" @click="remove">Удалить</button>
@@ -54,6 +56,15 @@ export default {
   methods: {
     save() {
       this.axios.post('/docs', {
+        title: this.title,
+        body: this.body,
+      })
+        .then(() => { this.$router.push('/'); })
+        .catch((error) => { console.log(error); });
+    },
+
+    update() {
+      this.axios.put(`/docs/${this.$route.params.id}`, {
         title: this.title,
         body: this.body,
       })
