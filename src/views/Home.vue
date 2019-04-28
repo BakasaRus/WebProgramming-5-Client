@@ -1,18 +1,30 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <section class="section">
+    <div class="container">
+      <div class="columns is-multiline">
+        <div v-for="doc in docs" :key="doc.title" class="column is-one-quarter">
+          <DocCard :title="doc.title" :body="doc.body"></DocCard>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import DocCard from '@/components/DocCard.vue';
 
 export default {
   name: 'home',
   components: {
-    HelloWorld,
+    DocCard,
   },
+
+  data: () => ({
+    docs: [
+      { title: 'Hello World!', body: '# Hello World!' },
+      { title: 'Hello Eugene!', body: '**This is a bold text**' },
+    ],
+  }),
 };
 </script>
