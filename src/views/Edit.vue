@@ -2,7 +2,11 @@
   <section class="section">
     <div class="container">
       <div class="is-flex control-panel">
-        <h2 class="title is-2">{{ title }}</h2>
+        <div class="field">
+          <div class="control">
+            <input class="input is-large" type="text" v-model="title">
+          </div>
+        </div>
         <div class="field is-grouped">
           <p class="control">
             <button v-if="this.$route.params.id === undefined" class="button is-success"
