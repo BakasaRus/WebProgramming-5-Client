@@ -2,17 +2,17 @@
   <div class="card">
     <header class="card-header">
       <p class="card-header-title">
-        {{ title }}
+        {{ doc.title }}
       </p>
     </header>
     <div class="card-content">
       <div class="content">
-        {{ body }}
+        {{ doc.body }}
       </div>
     </div>
     <footer class="card-footer">
-      <a href="#" class="card-footer-item">Edit</a>
-      <a href="#" class="card-footer-item">Delete</a>
+      <router-link :to="'/edit/' + this.doc._id" class="card-footer-item">Открыть</router-link>
+      <a href="#" class="card-footer-item">Удалить</a>
     </footer>
   </div>
 </template>
@@ -21,8 +21,7 @@
 export default {
   name: 'DocCard',
   props: {
-    title: String,
-    body: String,
+    doc: Object,
   },
 };
 </script>

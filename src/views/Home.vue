@@ -2,8 +2,8 @@
   <section class="section">
     <div class="container">
       <div class="columns is-multiline">
-        <div v-for="doc in docs" :key="doc.title" class="column is-one-quarter">
-          <DocCard :title="doc.title" :body="doc.body"></DocCard>
+        <div v-for="doc in docs" :key="doc.id" class="column is-one-quarter">
+          <DocCard :doc="doc"></DocCard>
         </div>
       </div>
     </div>
