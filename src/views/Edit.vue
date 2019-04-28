@@ -5,7 +5,7 @@
         <h2 class="title is-2">{{ title }}</h2>
         <div class="field is-grouped">
           <p class="control">
-            <button class="button is-success">Сохранить</button>
+            <button class="button is-success" @click="save">Сохранить</button>
           </p>
           <p class="control">
             <button class="button is-danger">Удалить</button>
@@ -36,13 +36,19 @@ import marked from 'marked';
 export default {
   name: 'Editor',
   data: () => ({
-    id: '',
+    _id: '',
     title: 'New Markdown document',
     body: '# Hello World!',
   }),
 
   methods: {
     save() {
+      this.axios.post('/docs', {
+        title: this.title,
+        body: this.body,
+      })
+        .then(() => { this.$router.push('/'); })
+        .catch((error) => { console.log(error); });
     },
   },
 
@@ -56,7 +62,7 @@ export default {
 
 <style scoped>
   .textarea {
-    height: 100vh;
+    height: 50vh;
   }
 
   .control-panel {
