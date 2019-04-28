@@ -3,7 +3,7 @@
     <div class="container">
       <div class="columns is-multiline">
         <div v-for="doc in docs" :key="doc.id" class="column is-one-quarter">
-          <DocCard :doc="doc"></DocCard>
+          <DocCard :doc="doc" @removed="load"></DocCard>
         </div>
       </div>
     </div>
@@ -25,9 +25,15 @@ export default {
   }),
 
   created() {
-    this.axios.get('/docs')
-      .then((result) => { this.docs = result.data.docs; })
-      .catch((error) => { console.log(error); });
+    this.load();
+  },
+
+  methods: {
+    load() {
+      this.axios.get('/docs')
+        .then((result) => { this.docs = result.data.docs; })
+        .catch((error) => { console.log(error); });
+    },
   },
 };
 </script>

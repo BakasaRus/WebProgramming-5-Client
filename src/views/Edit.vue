@@ -8,7 +8,7 @@
             <button class="button is-success" @click="save">Сохранить</button>
           </p>
           <p class="control">
-            <button class="button is-danger">Удалить</button>
+            <button class="button is-danger" @click="remove">Удалить</button>
           </p>
         </div>
       </div>
@@ -59,6 +59,14 @@ export default {
       })
         .then(() => { this.$router.push('/'); })
         .catch((error) => { console.log(error); });
+    },
+
+    remove() {
+      if (this.$route.params.id !== undefined) {
+        this.axios.delete(`/docs/${this.$route.params.id}`)
+          .then(() => { this.$router.push('/'); })
+          .catch((error) => { console.log(error); });
+      }
     },
   },
 
