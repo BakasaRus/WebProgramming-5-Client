@@ -1,9 +1,18 @@
 <template>
   <section class="section">
     <div class="container">
-      <div class="columns is-multiline">
+      <div v-if="docs.length > 0" class="columns is-multiline">
         <div v-for="doc in docs" :key="doc.id" class="column is-one-quarter">
           <DocCard :doc="doc" @removed="load"></DocCard>
+        </div>
+      </div>
+      <div v-else class="columns">
+        <div class="column is-half-desktop is-offset-one-quarter-desktop">
+          <div class="notification is-warning">
+            <strong>Ой, а документов и нет (｡•́︿•̀｡)</strong>
+            <br>
+            Попробуйте создать новый документ, это просто!
+          </div>
         </div>
       </div>
     </div>
