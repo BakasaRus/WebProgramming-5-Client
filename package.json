@@ -12,7 +12,8 @@
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "bulma": "^0.7.4",
-    "marked": "^0.6.2"
+    "marked": "^0.6.2",
+    "axios": "^0.18.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.7.0",

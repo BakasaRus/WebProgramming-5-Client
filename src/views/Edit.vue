@@ -36,9 +36,15 @@ import marked from 'marked';
 export default {
   name: 'Editor',
   data: () => ({
+    id: '',
     title: 'New Markdown document',
     body: '# Hello World!',
   }),
+
+  methods: {
+    save() {
+    },
+  },
 
   computed: {
     compiledMarkdown() {

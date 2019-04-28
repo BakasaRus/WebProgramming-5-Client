@@ -21,10 +21,13 @@ export default {
   },
 
   data: () => ({
-    docs: [
-      { title: 'Hello World!', body: '# Hello World!' },
-      { title: 'Hello Eugene!', body: '**This is a bold text**' },
-    ],
+    docs: [],
   }),
+
+  created() {
+    this.axios.get('/docs')
+      .then((result) => { this.docs = result.data.docs; })
+      .catch((error) => { console.log(error); });
+  },
 };
 </script>
