@@ -36,10 +36,20 @@ import marked from 'marked';
 export default {
   name: 'Editor',
   data: () => ({
-    _id: '',
     title: 'New Markdown document',
     body: '# Hello World!',
   }),
+
+  created() {
+    if (this.$route.params.id !== undefined) {
+      this.axios.get(`/docs/${this.$route.params.id}`)
+        .then((response) => {
+          this.title = response.data.doc.title;
+          this.body = response.data.doc.body;
+        })
+        .catch((error) => { console.log(error); });
+    }
+  },
 
   methods: {
     save() {
